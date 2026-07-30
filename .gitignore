@@ -1,0 +1,15 @@
+# secrets
+.env
+
+# real client profiling data — NEVER commit
+data/profiling_report.json
+
+# environment
+.venv/
+__pycache__/
+*.pyc
+
+# generated at runtime
+chroma/
+*.db
+runs/*.json
