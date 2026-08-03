@@ -1,0 +1,166 @@
+<!doctype html><html><head><meta charset='utf-8'>
+<title>Column descriptions — feedback loop</title>
+<style>
+:root { color-scheme: light dark; }
+* { box-sizing: border-box; }
+body { font: 14px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+       margin: 0; padding: 32px; background: #fff; color: #16181d; }
+h1 { font-size: 20px; margin: 0 0 4px; }
+h2 { font-size: 15px; margin: 32px 0 10px; text-transform: uppercase;
+     letter-spacing: .06em; color: #6b7280; }
+.sub { color: #6b7280; margin: 0 0 8px; }
+.wrap { overflow-x: auto; border: 1px solid #e3e6ea; border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; min-width: 720px; }
+th, td { text-align: left; vertical-align: top; padding: 9px 12px;
+         border-bottom: 1px solid #eef0f3; }
+th { background: #f7f8fa; font-weight: 600; white-space: nowrap;
+     position: sticky; top: 0; }
+td.col { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px;
+         white-space: nowrap; }
+tr.tablehead td { background: #f0f2f5; font-weight: 600; font-size: 12px;
+                  text-transform: uppercase; letter-spacing: .05em; color: #4b5563; }
+.changed { background: #fff8e1; }
+.changed::after { content: " changed"; font-size: 10px; color: #a16207;
+                  text-transform: uppercase; letter-spacing: .05em; }
+.muted { color: #9ca3af; }
+.badge { display: inline-block; padding: 1px 7px; border-radius: 999px;
+         font-size: 11px; font-weight: 600; }
+.ok { background: #dcfce7; color: #166534; }
+.no { background: #fee2e2; color: #991b1b; }
+.scope { background: #e0e7ff; color: #3730a3; font-family: ui-monospace, monospace; }
+code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; }
+@media (prefers-color-scheme: dark) {
+  body { background: #0f1115; color: #e6e8eb; }
+  .wrap { border-color: #262b33; }
+  th { background: #171a20; } th, td { border-bottom-color: #21252c; }
+  tr.tablehead td { background: #1b1f26; color: #9aa4b2; }
+  h2, .sub { color: #9aa4b2; }
+  .changed { background: #2b2410; }
+  .ok { background: #14361f; color: #86efac; }
+  .no { background: #3b1618; color: #fca5a5; }
+  .scope { background: #1e2447; color: #a5b4fc; }
+}
+</style></head><body>
+<h1>Column descriptions</h1>
+<p class='sub'>5 tables &middot; 20 columns &middot; 3 version(s)</p>
+<div class='wrap'><table><thead><tr><th>Column</th>
+<th>v1</th>
+<th>v2</th>
+<th>v3</th>
+</tr></thead><tbody>
+<tr class='tablehead'><td colspan='4'>customers</td></tr>
+<tr><td class='col'>cust_id</td>
+<td>Unique identifier for the customer account</td>
+<td>Unique identifier for the customer account</td>
+<td>Unique identifier for the customer account</td>
+</tr>
+<tr><td class='col'>full_name</td>
+<td>Full name of the registered customer</td>
+<td>Full name of the registered customer</td>
+<td>Full name of the registered customer</td>
+</tr>
+<tr><td class='col'>signup_date</td>
+<td>Date when the customer created their account</td>
+<td class='changed'>Creation of the customer account</td>
+<td>Creation of the customer account</td>
+</tr>
+<tr><td class='col'>country_code</td>
+<td>Country where the customer is located</td>
+<td>Country where the customer is located</td>
+<td>Country where the customer is located</td>
+</tr>
+<tr class='tablehead'><td colspan='4'>orders</td></tr>
+<tr><td class='col'>order_id</td>
+<td>Unique identifier for the order</td>
+<td>Unique identifier for the order</td>
+<td class='changed'>Unique identifier for the order, one row per order</td>
+</tr>
+<tr><td class='col'>cust_id</td>
+<td>Identifier of the customer who placed the order</td>
+<td>Identifier of the customer who placed the order</td>
+<td class='changed'>Identifier of the customer who placed the order, one row per order</td>
+</tr>
+<tr><td class='col'>order_ts</td>
+<td>Date and time when the order was placed</td>
+<td>Date and time when the order was placed</td>
+<td class='changed'>Date and time when the order was placed, one row per order</td>
+</tr>
+<tr><td class='col'>total_amount</td>
+<td>Total monetary amount for the order</td>
+<td class='changed'>Total monetary amount for the order in INR including tax</td>
+<td class='changed'>Total monetary amount for the order in INR including tax, one row per order</td>
+</tr>
+<tr class='tablehead'><td colspan='4'>order_items</td></tr>
+<tr><td class='col'>order_id</td>
+<td>Identifier of the order associated with this item</td>
+<td>Identifier of the order associated with this item</td>
+<td>Identifier of the order associated with this item</td>
+</tr>
+<tr><td class='col'>sku</td>
+<td>Stock keeping unit identifying the ordered product</td>
+<td>Stock keeping unit identifying the ordered product</td>
+<td>Stock keeping unit identifying the ordered product</td>
+</tr>
+<tr><td class='col'>qty</td>
+<td>Number of units ordered for this product</td>
+<td>Number of units ordered for this product</td>
+<td>Number of units ordered for this product</td>
+</tr>
+<tr><td class='col'>unit_price</td>
+<td>Price per unit for the product at the time of purchase</td>
+<td>Price per unit for the product at the time of purchase</td>
+<td>Price per unit for the product at the time of purchase</td>
+</tr>
+<tr class='tablehead'><td colspan='4'>products</td></tr>
+<tr><td class='col'>sku</td>
+<td>Unique stock keeping unit code for the product</td>
+<td>Unique stock keeping unit code for the product</td>
+<td>Unique stock keeping unit code for the product</td>
+</tr>
+<tr><td class='col'>title</td>
+<td>Display name of the product</td>
+<td>Display name of the product</td>
+<td>Display name of the product</td>
+</tr>
+<tr><td class='col'>category</td>
+<td>Commercial category or classification of the product</td>
+<td>Commercial category or classification of the product</td>
+<td>Commercial category or classification of the product</td>
+</tr>
+<tr><td class='col'>weight_kg</td>
+<td>Weight of a single unit of the product in kilograms</td>
+<td>Weight of a single unit of the product in kilograms</td>
+<td>Weight of a single unit of the product in kilograms</td>
+</tr>
+<tr class='tablehead'><td colspan='4'>payments</td></tr>
+<tr><td class='col'>payment_id</td>
+<td>Unique identifier for the payment attempt</td>
+<td>Unique identifier for the payment attempt</td>
+<td>Unique identifier for the payment attempt</td>
+</tr>
+<tr><td class='col'>order_id</td>
+<td>Identifier of the order being paid for</td>
+<td>Identifier of the order being paid for</td>
+<td>Identifier of the order being paid for</td>
+</tr>
+<tr><td class='col'>amount</td>
+<td>Monetary amount processed in the payment attempt</td>
+<td>Monetary amount processed in the payment attempt</td>
+<td>Monetary amount processed in the payment attempt</td>
+</tr>
+<tr><td class='col'>method</td>
+<td>Payment channel or method used for the transaction</td>
+<td>Payment channel or method used for the transaction</td>
+<td>Payment channel or method used for the transaction</td>
+</tr>
+</tbody></table></div>
+<h2>Feedback log</h2><div class='wrap'><table><thead><tr><th>#</th><th>Column</th><th>Scope</th><th>Comment</th><th>Rule injected</th><th>Given after</th><th>Status</th></tr></thead><tbody>
+<tr><td>1</td><td class='col'>customers.cust_id</td><td><span class='badge scope'>column</span></td><td>too verbose, and it just restates the type. Keep it under 10 words.</td><td>Keep the description under 10 words.</td><td class='col'>v1</td><td><span class='badge ok'>accepted</span></td></tr>
+<tr><td>2</td><td class='col'>customers.signup_date</td><td><span class='badge scope'>column</span></td><td>say what event this timestamps, not that it is a date</td><td>Describe the specific event being timestamped rather than simply stating that it is a date.</td><td class='col'>v1</td><td><span class='badge ok'>accepted</span></td></tr>
+<tr><td>3</td><td class='col'>orders.total_amount</td><td><span class='badge scope'>column</span></td><td>must state that this is in INR and includes tax</td><td>Specify that the total amount is in INR and includes tax.</td><td class='col'>v1</td><td><span class='badge ok'>accepted</span></td></tr>
+<tr><td>4</td><td class='col'>orders.order_id</td><td><span class='badge scope'>table</span></td><td>always name the granularity, e.g. &#x27;one row per ...&#x27;</td><td>Always specify the granularity using the format &#x27;one row per ...&#x27;.</td><td class='col'>v2</td><td><span class='badge ok'>accepted</span></td></tr>
+<tr><td>5</td><td class='col'>products.sku</td><td><span class='badge scope'>all</span></td><td>never start a description with &#x27;This column&#x27;</td><td>Never start the description with &#x27;This column&#x27;.</td><td class='col'>v2</td><td><span class='badge ok'>accepted</span></td></tr>
+<tr><td>6</td><td class='col'>products.title</td><td><span class='badge scope'>column</span></td><td>bad</td><td><span class='muted'>only 3 chars, minimum 8</span></td><td class='col'>v3</td><td><span class='badge no'>rejected: length</span></td></tr>
+<tr><td>7</td><td class='col'>products.title</td><td><span class='badge scope'>column</span></td><td>make it better plz</td><td><span class='muted'>The comment is vague and does not provide a concrete change to make.</span></td><td class='col'>v3</td><td><span class='badge no'>rejected: semantic</span></td></tr>
+</tbody></table></div>
+</body></html>

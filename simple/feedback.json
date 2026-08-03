@@ -1,0 +1,87 @@
+[
+  {
+    "id": 1,
+    "target": "customers.cust_id",
+    "scope": "column",
+    "comment": "too verbose, and it just restates the type. Keep it under 10 words.",
+    "rule": "Keep the description under 10 words.",
+    "status": "accepted",
+    "gate_failed": null,
+    "reason": "The reviewer explicitly requests keeping the description under 10 words, which is a concrete and actionable instruction.",
+    "given_after_version": "v1",
+    "created_at": "2026-07-30T19:30:12+00:00"
+  },
+  {
+    "id": 2,
+    "target": "customers.signup_date",
+    "scope": "column",
+    "comment": "say what event this timestamps, not that it is a date",
+    "rule": "Describe the specific event being timestamped rather than simply stating that it is a date.",
+    "status": "accepted",
+    "gate_failed": null,
+    "reason": "The comment gives a clear, specific instruction on how to change the focus of the description.",
+    "given_after_version": "v1",
+    "created_at": "2026-07-30T19:30:13+00:00"
+  },
+  {
+    "id": 3,
+    "target": "orders.total_amount",
+    "scope": "column",
+    "comment": "must state that this is in INR and includes tax",
+    "rule": "Specify that the total amount is in INR and includes tax.",
+    "status": "accepted",
+    "gate_failed": null,
+    "reason": "The comment gives a concrete instruction to include specific details about the currency and tax inclusion.",
+    "given_after_version": "v1",
+    "created_at": "2026-07-30T19:30:14+00:00"
+  },
+  {
+    "id": 4,
+    "target": "orders.order_id",
+    "scope": "table",
+    "comment": "always name the granularity, e.g. 'one row per ...'",
+    "rule": "Always specify the granularity using the format 'one row per ...'.",
+    "status": "accepted",
+    "gate_failed": null,
+    "reason": "The comment provides a concrete and repeatable instruction on how to describe the table's granularity.",
+    "given_after_version": "v2",
+    "created_at": "2026-07-30T19:30:25+00:00"
+  },
+  {
+    "id": 5,
+    "target": "products.sku",
+    "scope": "all",
+    "comment": "never start a description with 'This column'",
+    "rule": "Never start the description with 'This column'.",
+    "status": "accepted",
+    "gate_failed": null,
+    "reason": "The comment provides a clear, specific formatting rule to avoid a particular starting phrase.",
+    "given_after_version": "v2",
+    "created_at": "2026-07-30T19:30:26+00:00"
+  },
+  {
+    "id": 6,
+    "target": "products.title",
+    "scope": "column",
+    "comment": "bad",
+    "rule": "",
+    "status": "rejected",
+    "gate_failed": "length",
+    "reason": "only 3 chars, minimum 8",
+    "given_after_version": "v3",
+    "created_at": "2026-07-30T19:30:38+00:00"
+  },
+  {
+    "id": 7,
+    "target": "products.title",
+    "scope": "column",
+    "comment": "make it better plz",
+    "rule": "",
+    "status": "rejected",
+    "gate_failed": "semantic",
+    "reason": "The comment is vague and does not provide a concrete change to make.",
+    "given_after_version": "v3",
+    "created_at": "2026-07-30T19:30:38+00:00",
+    "clarifying_question": "What specific improvements or details should be added to the product title description?"
+  }
+]
